@@ -1,0 +1,50 @@
+﻿<Window x:Class="Inspection.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Inspection"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1500" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+                <Button x:Name="butt_delTest" Content="Delete" Margin="5" FontSize="17" Padding="20 5" IsEnabled="False" Click="butt_delTest_Click"/>
+                <Button x:Name="butt_saveTest" Content="Save" Margin="5" FontSize="17" Padding="20 5" Click="butt_saveTest_Click"/>
+            </DockPanel>
+            <DataGrid x:Name="dg_tests" AutoGenerateColumns="False" Margin="5" Loaded="dg_tests_Loaded" SelectionChanged="dg_tests_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding TestId}" Header="ID проверки" />
+                    <DataGridTextColumn Binding="{Binding TestDate}" Header="Дата проверки" />
+                    <DataGridTextColumn Binding="{Binding BlockName}" Header="Наименование проверяемого блока" />
+                    <DataGridTextColumn Binding="{Binding Note}" Header="Примечание" />
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+            
+        </DockPanel>
+
+        <DockPanel Grid.Column="1">
+            <DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+                <Button x:Name="butt_delParam" Content="Delete" Margin="5" FontSize="17" Padding="20 5" IsEnabled="False" Click="butt_delParam_Click"/>
+                <Button x:Name="butt_saveParam" Content="Save" Margin="5" FontSize="17" Padding="20 5" Click="butt_saveParam_Click"/>
+            </DockPanel>
+            <DataGrid x:Name="dg_params" AutoGenerateColumns="False" Margin="5" Loaded="dg_params_Loaded" SelectionChanged="dg_params_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding ParameterId}" Header="ID параметра" />
+                    <DataGridTextColumn Binding="{Binding TestId}" Header="ID проверки" />
+                    <DataGridTextColumn Binding="{Binding ParameterName}" Header="Наименование параметра" />
+                    <DataGridTextColumn Binding="{Binding RequiredValue}" Header="Требуемое значение параметра" />
+                    <DataGridTextColumn Binding="{Binding MeasuredValue}" Header="Измеренное значение параметра" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+        
+    </Grid>
+</Window>
